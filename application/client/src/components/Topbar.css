@@ -1,0 +1,23 @@
+.topbar{
+    height: 60px;
+    background-color: #322F2F;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    align-items: center;
+}
+
+.topbar_title{
+    color: #C7C7C7;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.topbar_buttons_container{
+    display: flex;
+    height: 100%;
+    width: 25%;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+}

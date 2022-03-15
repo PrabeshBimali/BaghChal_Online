@@ -1,0 +1,19 @@
+:root{
+    --link-color: rgb(26, 73, 145);
+    --button-color: #E02A2A;
+    --button-font-color: #E9E9E9;
+}
+
+.homepage{
+    background-color: black;
+    height: 100vh;
+}
+
+.main_wrapper{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    margin: 5px 0;
+    display: flex;
+}
+

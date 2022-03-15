@@ -1,0 +1,7 @@
+.lobby_container{
+    width: 60%;
+    height: 100vh;
+    background-color: #322f2f;
+    margin-left: 20px;
+    margin-right: 20px;
+}
