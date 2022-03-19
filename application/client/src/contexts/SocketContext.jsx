@@ -10,7 +10,10 @@ const Socket = ({children}) => {
     const [ socket, setSocket ] = useState()
     
     useEffect(()=>{
-        const connection = io.connect('http://localhost:5000')
+        const connection = io('http://localhost:5000', {
+            withCredentials: true,
+            autoConnect: false
+        }).connect()
         setSocket(connection)
     }, [])
 

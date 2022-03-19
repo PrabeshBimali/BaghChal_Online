@@ -3,7 +3,12 @@ const http = require("http")
 const helmet = require("helmet")
 const socket = require('socket.io')
 const cors = require('cors')
-const { corsConfig, expressSession } = require('./controllers/serverController')
+const { corsConfig,
+     expressSession,
+      sessionWrap } = require('./controllers/serverController')
+
+const { initializeUser,
+        onCreateLobby } = require('./controllers/socketController')
 
 
 // Importing routes
@@ -33,15 +38,20 @@ app.use('/auth', authRoutes)
 
 // Socket code
 
-const io = socket(server, {cors: {corsConfig}})
+const io = socket(server, {cors: corsConfig})
+io.use(sessionWrap(expressSession))
+
 
 io.on('connection', function (socket){
     console.log(`A user with id ${socket.id} connected` )
     console.log(io.engine.clientsCount)
+    console.log(socket.request.session.user)
+    initializeUser(socket)
 
-    socket.on('client', ()=>{
-        console.log("Client Event")
+    socket.on('create_lobby', (data) => {
+        onCreateLobby(io, socket, data)
     })
+
 
     socket.on('disconnecting', ()=>{
         console.log(`${socket.id} disconnecting..`)

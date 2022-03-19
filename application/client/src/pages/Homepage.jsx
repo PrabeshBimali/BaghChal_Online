@@ -14,9 +14,8 @@ export default function Homepage() {
   const [toggleBlackScreen, setToggleBlackScreen] = useState(false)
   const [toggleCreateGamePopup, setToggleCreateGamePopup] = useState(false)
 
-  const [gameDetails, setGameDetails] = useState({})
-  const [lobbyList, setLobbyList] = useState([])
-
+  const [ lobbies, setLobbies ] = useState([])
+  
   return (
     <>
       <BlackScreen toggleBlackScreenProp={toggleBlackScreen} 
@@ -27,7 +26,7 @@ export default function Homepage() {
       <div className="homepage">
         <Topbar/>
         <div className='main_wrapper'>
-          <Sidebar/>
+          <Sidebar lobbiesProp={lobbies} setLobbiesProp={setLobbies}/>
           <Lobby/>
           <HomepageButtons setToggleBlackScreenProp={setToggleBlackScreen}
            setToggleCreateGamePopupProp={setToggleCreateGamePopup}/>

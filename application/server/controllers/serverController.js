@@ -21,9 +21,12 @@ const expressSession = session({
     }
 })
 
+const sessionWrap = expressMiddleware => (socket, next) => expressMiddleware(socket.request, {}, next);
+
+
 const corsConfig = {
     origin: "http://localhost:3000",
     credentials: true
 }
 
-module.exports = {  expressSession, corsConfig }
+module.exports = {  expressSession, corsConfig, sessionWrap }

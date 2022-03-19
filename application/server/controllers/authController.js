@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt')
-const validateUser = require('../helpers/validateUser')
+const validateUser = require('./authentication/validateUser')
 const db = require('../config/db')
 
 async function registerUser(req, res){

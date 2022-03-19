@@ -1,5 +1,6 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { AccountContext } from '../../contexts/UserContext'
+import { SocketContext } from '../../contexts/SocketContext'
 import './CreateGamePopup.css'
 
 
@@ -7,12 +8,29 @@ import './CreateGamePopup.css'
 export default function CreateGamePopup() {
 
   const { user } = useContext(AccountContext)
+  const  socket  = useContext(SocketContext)
 
+  const [ side, setSide ] = useState("Bagh")
+  const [ type, setType ] = useState("Ranked")
   
 
   function handleSubmit(event){
-    
+    event.preventDefault()
+    const data = {
+      side: side, 
+      type: type
+    }
+   socket.emit('create_lobby',  { ...data } ) 
   }
+
+  socket.on('lobby_created', (data)=>{
+    //console.log("Data")
+    console.log(data)
+  })
+
+  // socket.on('wtf', ()=>{
+  //   console.log("WTF")
+  // })
 
 
   return (
@@ -22,7 +40,7 @@ export default function CreateGamePopup() {
       </div>
       <div className='create_game_popup_select_container'>
         <span className='create_game_popup_select_text'>Choose Side: </span>
-        <select className='create_game_popup_select_option'>
+        <select onChange={e=>setSide(e.target.value)} className='create_game_popup_select_option'>
           <option>Bagh</option>
           <option>Goat</option>
         </select>
@@ -30,7 +48,7 @@ export default function CreateGamePopup() {
       {
         user.loggedIn ? <div className='create_game_popup_select_container'>
         <span className='create_game_popup_select_text'>Choose Type: </span>
-        <select className='create_game_popup_select_option'>
+        <select onChange={e=>setType(e.target.value)} className='create_game_popup_select_option'>
           <option>Ranked</option>
           <option>Casual</option>
         </select>
