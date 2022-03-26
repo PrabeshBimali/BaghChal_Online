@@ -5,13 +5,14 @@ import './CreateGamePopup.css'
 
 
 
-export default function CreateGamePopup() {
+export default function CreateGamePopup(props) {
 
   const { user } = useContext(AccountContext)
   const  socket  = useContext(SocketContext)
 
   const [ side, setSide ] = useState("Bagh")
   const [ type, setType ] = useState("Ranked")
+
   
 
   function handleSubmit(event){
@@ -23,9 +24,11 @@ export default function CreateGamePopup() {
    socket.emit('create_lobby',  { ...data } ) 
   }
 
+
+
   socket.on('lobby_created', (data)=>{
     //console.log("Data")
-    console.log(data)
+    props.setLobbiesProp(data)
   })
 
   // socket.on('wtf', ()=>{

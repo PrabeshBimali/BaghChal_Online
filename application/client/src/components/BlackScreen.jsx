@@ -26,7 +26,7 @@ export default function BlackScreen(props) {
   if(props.toggleBlackScreenProp){
     return (
       <div style={style} className='black_screen' onClick={handleClick}>
-        <CreateGamePopup/>
+        <CreateGamePopup setLobbiesProp={props.setLobbiesProp}/>
       </div>
     );
   }

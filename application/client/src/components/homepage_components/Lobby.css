@@ -5,3 +5,42 @@
     margin-left: 20px;
     margin-right: 20px;
 }
+
+
+.lobby_table {
+    position: relative;
+    margin: 10px auto;
+    padding: 0;
+    width: 70%;
+    height: auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.lobby_table thead tr {
+    background-color: var(--button-color);
+    font-weight: bold;
+    color: var(--button-font-color);
+}
+
+.lobby_table tr {
+    background-color: #686363;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 100%;
+    border-top: 1px solid #000;
+}
+
+.lobby_table tr td {
+    margin: 0;
+    padding: 4px 8px;
+    border: 0;
+    
+}
+
+.lobby_table tbody > tr:hover {
+    background-color: #8f8888;
+    cursor: pointer;
+}
+

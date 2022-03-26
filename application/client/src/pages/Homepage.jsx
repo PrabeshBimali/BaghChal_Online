@@ -21,13 +21,14 @@ export default function Homepage() {
       <BlackScreen toggleBlackScreenProp={toggleBlackScreen} 
       toggleCreateGamePopupProp={toggleCreateGamePopup}
       setToggleBlackScreenProp={setToggleBlackScreen} 
-      setToggleCreateGamePopupProp={setToggleCreateGamePopup}/>
+      setToggleCreateGamePopupProp={setToggleCreateGamePopup}
+      setLobbiesProp={setLobbies}/>
 
       <div className="homepage">
         <Topbar/>
         <div className='main_wrapper'>
-          <Sidebar lobbiesProp={lobbies} setLobbiesProp={setLobbies}/>
-          <Lobby/>
+          <Sidebar/>
+          <Lobby lobbiesProp={lobbies}/>
           <HomepageButtons setToggleBlackScreenProp={setToggleBlackScreen}
            setToggleCreateGamePopupProp={setToggleCreateGamePopup}/>
         </div>
