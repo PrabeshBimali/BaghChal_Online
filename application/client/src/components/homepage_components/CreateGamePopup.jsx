@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { AccountContext } from '../../contexts/UserContext'
 import { SocketContext } from '../../contexts/SocketContext'
 import './CreateGamePopup.css'
@@ -6,6 +6,8 @@ import './CreateGamePopup.css'
 
 
 export default function CreateGamePopup(props) {
+
+  const { setLobbiesProp } = props
 
   const { user } = useContext(AccountContext)
   const  socket  = useContext(SocketContext)
@@ -15,21 +17,23 @@ export default function CreateGamePopup(props) {
 
   
 
-  function handleSubmit(event){
+  async function handleSubmit(event){
     event.preventDefault()
     const data = {
       side: side, 
       type: type
     }
-   socket.emit('create_lobby',  { ...data } ) 
+   await socket.emit('create_lobby',  { ...data } ) 
   }
 
+  
 
-
-  socket.on('lobby_created', (data)=>{
-    //console.log("Data")
-    props.setLobbiesProp(data)
-  })
+  useEffect(()=>{
+    socket.on('lobby_created', (data)=>{
+      //console.log("Data")
+      setLobbiesProp(data)
+    })
+  }, [socket, setLobbiesProp])
 
   // socket.on('wtf', ()=>{
   //   console.log("WTF")

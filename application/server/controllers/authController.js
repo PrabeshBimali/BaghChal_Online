@@ -60,7 +60,7 @@ async function registerUser(req, res){
 
     }catch(error){
         console.log(`Server Error: ${error.message}`)
-        return res.satus(500).json({error: true, message: "Internal server Error"})
+        return res.status(500).json({error: true, message: "Internal server Error"})
     }
 }
 
@@ -119,7 +119,7 @@ async function loginUser(req, res){
         
     }catch(error){
         console.log(`Server Error: ${error.message}`)
-        return res.satus(500).json({error: true, message: "Internal server Error"})
+        return res.status(500).json({error: true, message: "Internal server Error"})
     }
 }
 

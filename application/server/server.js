@@ -8,7 +8,9 @@ const { corsConfig,
       sessionWrap } = require('./controllers/serverController')
 
 const { initializeUser,
-        onCreateLobby } = require('./controllers/socketController')
+        onCreateLobby,
+        onGetLobbies,
+        onDisconnect } = require('./controllers/socketController')
 
 
 // Importing routes
@@ -46,16 +48,15 @@ io.on('connection', function (socket){
     console.log(`A user with id ${socket.id} connected` )
     console.log(io.engine.clientsCount)
     console.log(socket.request.session.user)
-    initializeUser(socket)
+    initializeUser(io, socket)
 
     socket.on('create_lobby', (data) => {
         onCreateLobby(io, socket, data)
     })
 
-
     socket.on('disconnecting', ()=>{
+        onDisconnect(socket)
         console.log(`${socket.id} disconnecting..`)
-        io.emit("disconnected", {id: socket.id})
     })
 
     
