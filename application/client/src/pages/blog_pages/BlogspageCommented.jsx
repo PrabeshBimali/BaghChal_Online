@@ -21,6 +21,60 @@ export default function BlogpageCommented() {
     so that it remains available to everyone with an in interest in Japanese history.`,
     author: 'Prabesh',
     publishedDate: '2021/Mar/23'
+  },
+  {
+    imageSrc: "https://img1.etsystatic.com/019/0/9161936/il_fullxfull.564171949_ajso.jpg",
+    heading: "BaghChal History", 
+    body: `This is the history of BaghChal. Welcome to SengokuDaimyo.com—a webpage 
+    started by the late Anthony J. Bryant as the central linking point to shops and various projects, 
+    mostly related to medieval Japan.`,
+    author: 'Prabesh',
+    publishedDate: '2021/Mar/23'
+  },
+  {
+    imageSrc: "https://img1.etsystatic.com/019/0/9161936/il_fullxfull.564171949_ajso.jpg",
+    heading: "BaghChal History", 
+    body: `This is the history of BaghChal. Welcome to SengokuDaimyo.com—a webpage 
+    started by the late Anthony J. Bryant as the central linking point to shops and various projects, 
+    mostly related to medieval Japan.`,
+    author: 'Prabesh',
+    publishedDate: '2021/Mar/23'
+  },
+  {
+    imageSrc: "https://img1.etsystatic.com/019/0/9161936/il_fullxfull.564171949_ajso.jpg",
+    heading: "BaghChal History", 
+    body: `This is the history of BaghChal. Welcome to SengokuDaimyo.com—a webpage 
+    started by the late Anthony J. Bryant as the central linking point to shops and various projects, 
+    mostly related to medieval Japan.`,
+    author: 'Prabesh',
+    publishedDate: '2021/Mar/23'
+  },
+  {
+    imageSrc: "https://img1.etsystatic.com/019/0/9161936/il_fullxfull.564171949_ajso.jpg",
+    heading: "BaghChal History", 
+    body: `This is the history of BaghChal. Welcome to SengokuDaimyo.com—a webpage 
+    started by the late Anthony J. Bryant as the central linking point to shops and various projects, 
+    mostly related to medieval Japan.`,
+    author: 'Prabesh',
+    publishedDate: '2021/Mar/23'
+  },
+  {
+    imageSrc: "https://img1.etsystatic.com/019/0/9161936/il_fullxfull.564171949_ajso.jpg",
+    heading: "BaghChal History", 
+    body: `This is the history of BaghChal. Welcome to SengokuDaimyo.com—a webpage 
+    started by the late Anthony J. Bryant as the central linking point to shops and various projects, 
+    mostly related to medieval Japan.`,
+    author: 'Prabesh',
+    publishedDate: '2021/Mar/23'
+  },
+  {
+    imageSrc: "https://img1.etsystatic.com/019/0/9161936/il_fullxfull.564171949_ajso.jpg",
+    heading: "BaghChal History", 
+    body: `This is the history of BaghChal. Welcome to SengokuDaimyo.com—a webpage 
+    started by the late Anthony J. Bryant as the central linking point to shops and various projects, 
+    mostly related to medieval Japan.`,
+    author: 'Prabesh',
+    publishedDate: '2021/Mar/23'
   }]
 
   return (

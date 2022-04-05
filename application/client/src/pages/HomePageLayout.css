@@ -5,15 +5,9 @@
 }
 
 .homepage{
-    background-color: black;
-    height: 100vh;
+    display: flex;
+    margin-top: 10px;
 }
 
-.main_wrapper{
-    position: fixed;
-    height: 100vh;
-    width: 100%;
-    margin: 5px 0;
-    display: flex;
-}
+
 

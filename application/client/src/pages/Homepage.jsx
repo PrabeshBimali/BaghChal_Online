@@ -1,7 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import "./Homepage.css"
-import Topbar from '../components/Topbar' 
-import Sidebar from '../components/Sidebar';
+import HomePageLayout from './HomePageLayout';
 import Lobby from '../components/homepage_components/Lobby';
 import HomepageButtons from '../components/homepage_components/HomepageButtons';
 import BlackScreen from '../components/BlackScreen'
@@ -38,16 +36,11 @@ export default function Homepage() {
       setToggleBlackScreenProp={setToggleBlackScreen} 
       setToggleCreateGamePopupProp={setToggleCreateGamePopup}
       setLobbiesProp={setLobbies}/>
-
-      <div className="homepage">
-        <Topbar/>
-        <div className='main_wrapper'>
-          <Sidebar/>
+      <HomePageLayout>
           <Lobby lobbiesProp={lobbies}/>
           <HomepageButtons setToggleBlackScreenProp={setToggleBlackScreen}
            setToggleCreateGamePopupProp={setToggleCreateGamePopup}/>
-        </div>
-      </div>
+      </HomePageLayout>       
     </>
   );
 }
