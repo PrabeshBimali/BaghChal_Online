@@ -1,5 +1,5 @@
 .sidebar{
-    width: 60px;
+    width: 40px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -19,6 +19,7 @@
     justify-content: center;
     gap: 10px;
     padding: 10px;
+    color: #999;
 }
 
 .sidebar_icon_text{
@@ -29,4 +30,21 @@
     transform: scale(100%);
 }
 
+.sidebar_icon_container:hover{
+    background-color: rgb(73, 71, 71);
+    border-radius: 5px;
+    color: black;
+    cursor: pointer;
+}
 
+.navigation_icon{
+    transition: transform ease-in 100ms;
+}
+
+.sidebar:hover .navigation_icon{
+    transform: rotate(90deg);
+}
+
+.sidebar_link{
+    text-decoration: none;
+}

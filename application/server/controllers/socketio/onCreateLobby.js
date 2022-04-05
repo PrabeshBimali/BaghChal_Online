@@ -24,28 +24,34 @@ const isDataValid = (data) => {
 }
 
 const onCreateLobby = async (io, socket, data) => {
-    if(isDataValid(data)){
-        if(socket.request.session.user){
-
-            const { username, id } = socket.request.session.user
-
-            await RedisClient.hset(
-                `userlobby:${id}`,
-                'username', `${username}`,
-                'side', `${data.side}`, 
-                'type', `${data.type}`
-            )
-
-            const lobbies = await getAllLobbies('userlobby*')
-            console.log(lobbies)
-            await io.in('userlobby').emit("lobby_created", lobbies)
-
+    try{
+        if(isDataValid(data)){
+            if(socket.request.session.user){
+    
+                const { username, id } = socket.request.session.user
+    
+                await RedisClient.hset(
+                    `userlobby:${id}`,
+                    'username', `${username}`,
+                    'side', `${data.side}`, 
+                    'type', `${data.type}`
+                )
+    
+                const lobbies = await getAllLobbies('userlobby*')
+                console.log(lobbies)
+                await io.in('userlobby').emit("lobby_created", lobbies)
+    
+            }else{
+                // TODO
+            }
         }else{
             // TODO
         }
-    }else{
-        // TODO
+    }catch(error){
+        console.log("Error while creating lobby:")
+        console.log(error)
     }
+    
 }
 
 module.exports = onCreateLobby

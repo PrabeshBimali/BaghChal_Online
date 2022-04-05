@@ -9,13 +9,13 @@ const { corsConfig,
 
 const { initializeUser,
         onCreateLobby,
-        onGetLobbies,
         onDisconnect } = require('./controllers/socketController')
 
 
 // Importing routes
 
 const authRoutes = require('./routes/authRoutes')
+const blogRoutes = require('./routes/blogRoutes')
 
 
 const app = express()
@@ -36,7 +36,7 @@ app.use(expressSession)
 // Endpoints
 
 app.use('/auth', authRoutes)
-
+app.use('/blog', blogRoutes)
 
 // Socket code
 
