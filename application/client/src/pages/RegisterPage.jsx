@@ -65,7 +65,7 @@ export default function RegisterPage() {
     
     
     }catch(error){
-      console.log(`ERROR: ${error}`)
+      console.log(`Error while signing up: ${error}`)
     }
     
   }

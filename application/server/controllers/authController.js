@@ -17,7 +17,9 @@ async function registerUser(req, res){
 
         const {username, email, password} = req.body;
 
-
+        username = username.trim().toLowerCase()
+        email = email.trim().toLowerCase()
+        password = password.trim()
 
         // check whether username and email already exists
 
@@ -83,9 +85,10 @@ async function loginUser(req, res){
             return res.status(400).json({error: true, message: validate.message, code: 400 })
         }
         
-        const {username, password} = req.body;
+        let {username, password} = req.body;
 
-
+        username = username.trim().toLowerCase()
+        password = password.trim()
 
         // Check whether username exists
 
@@ -135,4 +138,18 @@ function isAuthenticated(req, res){
     return res.status(400).json({error: true, message: "Not logged in"})
 }
 
-module.exports = {registerUser, loginUser, isAuthenticated}
+function isAuthenticatedMiddleware(req, res, next){
+    if(req.session.user){
+        if(req.session.user.username && req.session.user.id){
+            next()
+        }else{
+            return res.status(400).json({error: true, message: "Not logged in"})
+        }
+    }else{
+        return res.status(400).json({error: true, message: "Not logged in"})
+    }
+
+    
+}
+
+module.exports = {registerUser, loginUser, isAuthenticated, isAuthenticatedMiddleware}

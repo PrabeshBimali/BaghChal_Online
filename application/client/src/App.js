@@ -10,6 +10,7 @@ import BlogspageLiked from "./pages/blog_pages/BlogspageLiked"
 import BlogspageCommented from "./pages/blog_pages/BlogspageCommented";
 import PublishBlog from "./pages/blog_pages/PublishBlog";
 import BlogspageMy from "./pages/blog_pages/BlogspageMy";
+import ViewBlog from "./pages/blog_pages/ViewBlog";
 
 function App() {
   return (
@@ -19,13 +20,14 @@ function App() {
           <Router>
             <Routes>
               <Route path="/" element={<Homepage />}></Route>
-              <Route path="/login" element={<LoginPage />}></Route>
-              <Route path="/register" element={<RegisterPage />}></Route>
-              <Route path='/blogs' element={<Blogspage />}></Route>
-              <Route path='/blogs/liked' element={<BlogspageLiked />}></Route>
+              <Route path="login" element={<LoginPage />}></Route>
+              <Route path="register" element={<RegisterPage />}></Route>
+              <Route path='blogs' element={<Blogspage />}></Route>
+              <Route path='blogs/liked' element={<BlogspageLiked />}></Route>
               <Route path='blogs/commented' element={<BlogspageCommented/>}></Route>
               <Route path='blogs/my' element={<BlogspageMy/>}></Route>
               <Route path='blogs/publish' element={<PublishBlog/>}></Route>
+              <Route path="blogs/:blogId" element={<ViewBlog/>}></Route>
             </Routes>
           </Router>
         </div>

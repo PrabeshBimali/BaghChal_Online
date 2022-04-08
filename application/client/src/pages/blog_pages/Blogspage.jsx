@@ -1,32 +1,40 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import BlogspageLayout from './BlogspageLayout'
 import BlogCard from '../../components/blogpage_components/BlogCard'
 
 export default function BlogPage() {
 
-  const data = [{
-    imageSrc: "https://img1.etsystatic.com/019/0/9161936/il_fullxfull.564171949_ajso.jpg",
-    heading: "BaghChal History", 
-    body: `This is the history of BaghChal. Welcome to SengokuDaimyo.com—a webpage 
-    started by the late Anthony J. Bryant as the central linking point to shops and various projects, 
-    mostly related to medieval Japan.`,
-    author: 'Prabesh',
-    publishedDate: '2021/Mar/23'
-  },
-  {
-    heading: "BaghChal History", 
-    body: `This is the history of BaghChal. Welcome to SengokuDaimyo.com—a webpage 
-    started by the late Anthony J. Bryant as the central linking point to shops and various projects, 
-    mostly related to medieval Japan. It is now maintained and updated in his memory by his friends and students 
-    so that it remains available to everyone with an in interest in Japanese history.`,
-    author: 'Prabesh',
-    publishedDate: '2021/Mar/23'
-  }]
+  const [allBlogs, setAllBlogs] = useState([])
+
+  useEffect(()=>{
+    async function getBlogs(){
+      try{
+        const response = await fetch('http://localhost:5000/blog/all', {
+          mode: 'cors',
+          method: 'GET',
+          credentials: 'include'
+        });
+
+        if(response.ok){
+          console.log('ok')
+          const data = await response.json()
+          setAllBlogs(data.payload.blogs)
+        }
+
+      }catch(error){
+        console.log('Error while fetching all blogs')
+        console.log(error)
+      }
+    }
+
+    getBlogs()
+
+  }, [])
 
   return (
     <BlogspageLayout>
       {
-        data.map(value => {
+        allBlogs.map(value => {
           return <BlogCard blogData={value}/>
         })
       }
