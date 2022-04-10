@@ -1,5 +1,31 @@
 .view_blog_container{
-    width: 70%;
-    border: solid 1px black;
+    width: 60%;
     margin: 0 auto;
+}
+
+.view_blog_title_container{
+    font-size: 30px;
+    font-weight: bold;
+    color: #999;
+}
+
+.view_blog_body_container{
+    padding: 10px;
+    text-align: left;
+    border: solid 1px #999;
+    border-radius: 5px;
+    color: #ccc;
+    line-height: 23px;
+    padding: 20px;
+}
+
+.view_blog_body_container > p{
+    margin-top: 2em;
+}
+
+.view_blog_footer_container{
+    color: #999;
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
 }

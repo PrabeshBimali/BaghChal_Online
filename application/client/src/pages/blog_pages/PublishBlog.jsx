@@ -40,6 +40,8 @@ export default function PublishBlog() {
 
   const publishBlog = async (event) => {
 
+    document.body.scrollTop = 0
+
     event.preventDefault()
     try{
 
@@ -130,7 +132,7 @@ function BlogEditor(props){
     const { value } = e.target
 
     setEditorInput(value)
-    props.setMarkupProp(value)
+    
   }
 
   useEffect(()=>{
@@ -140,10 +142,12 @@ function BlogEditor(props){
       })
         return marked(editorInput)
      }
+     const parsedMarkup = content()
 
-     setEditorOutput(content())
+     setEditorOutput(parsedMarkup)
+     props.setMarkupProp(parsedMarkup)
 
-  }, [editorInput, editorOutput])
+  }, [editorInput, editorOutput, props])
 
 
   return(

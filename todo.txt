@@ -1,0 +1,11 @@
+# for Blogs
+
+i.) Comments
+ii.) Likes
+iii.) Edit
+iv.) Delete
+v.) Little Ui changes
+
+
+# Tonight
+# Finish Lobby implementation

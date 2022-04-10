@@ -7,10 +7,10 @@ export default function Blogspage({ children }) {
     <HomePageLayout>
         <div className="blogspage_container">
           <div className="blogspage_header">
-            <NavLink to="/blogs" className="blogspage_link" activeStyle={{ color: "red" }}>
+            <NavLink to="/blogs" className="blogspage_link">
               Community Blogs
             </NavLink>
-            <NavLink to="/blogs/liked" className="blogspage_link" activeStyle={{ color: "red" }}>
+            <NavLink to="/blogs/liked" className="blogspage_link">
               Liked Blogs
             </NavLink>
             <NavLink to="/blogs/my" className="blogspage_link">

@@ -6,8 +6,8 @@ async function createNewBlog(req, res){
         const { title, description, markup } = req.body
         const { filename } = req.file
 
-        const insertString = 'INSERT INTO Blogs (title, description, markup, imagename, userid) values($1, $2, $3, $4, $5)'
-        await db.query(insertString, [title, description, markup, filename, id])
+        const query = 'INSERT INTO Blogs (title, description, markup, imagename, userid) values($1, $2, $3, $4, $5)'
+        await db.query(query, [title, description, markup, filename, id])
 
         return res.status(200).json({error: false, payload: {
             message: "Blog Saved!"
@@ -24,12 +24,12 @@ async function createNewBlog(req, res){
 
 async function getAllBlogs(req, res){
     try{
-        const selectQuery = `Select blogid, title, description, blogcomments, likes, datecreated, username 
+        const query = `Select blogid, title, description, blogcomments, likes, datecreated, username 
 		from blogs inner join users
 		on blogs.userid = users.userid
 		order by datecreated desc`
 
-        const blogs = await db.query(selectQuery)
+        const blogs = await db.query(query)
 
         return res.status(200).json({error: false, payload: {
             blogs: blogs.rows
@@ -46,11 +46,18 @@ async function getAllBlogs(req, res){
 async function getMyBlogs(req, res){
     try{
 
-        const selectQuery = ``
-        const blogs = db.query(selectQuery)
+        const { username } = req.session.user
+
+        const query = `Select blogid, title, description, blogcomments, likes, datecreated, username 
+		from blogs inner join users
+		on blogs.userid = users.userid
+        where users.username = $1
+		order by datecreated desc`
+
+        const blogs = await db.query(query, [username])
 
         return res.status(200).json({error: false, payload: {
-            blogs: (await blogs).rows
+            blogs: blogs.rows
         }})
 
     }catch(error){
@@ -60,5 +67,27 @@ async function getMyBlogs(req, res){
     }
 }
 
+async function getBlogDetail(req, res){
+    try{
 
-module.exports = { createNewBlog, getAllBlogs }
+        const { blogid } = req.query
+        console.log(blogid)
+
+        const query = `Select blogid, title, description, blogcomments, markup, likes, datecreated, username 
+		from blogs inner join users
+		on blogs.userid = users.userid where blogid = $1`
+
+        const blogDetails = await db.query(query, [blogid])
+        const data = blogDetails.rows[0]
+
+        return res.status(200).json({error: false, payload: { ...data }})
+
+    }catch(error){
+        console.log('Error while fetching blog details')
+        console.log(error)
+        return res.status(500).json({error: true, message: "Internal server error"})
+    }
+}
+
+
+module.exports = { createNewBlog, getAllBlogs, getBlogDetail, getMyBlogs }

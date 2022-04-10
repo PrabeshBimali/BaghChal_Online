@@ -9,7 +9,7 @@ const { corsConfig,
 
 const { initializeUser,
         onCreateLobby,
-        onDisconnect } = require('./controllers/socketController')
+        onDisconnect, onJoinGame } = require('./controllers/socketController')
 
 
 // Importing routes
@@ -52,6 +52,10 @@ io.on('connection', function (socket){
 
     socket.on('create_lobby', (data) => {
         onCreateLobby(io, socket, data)
+    })
+
+    socket.on('join_game', (data) => {
+        onJoinGame(io, socket, data)
     })
 
     socket.on('disconnecting', ()=>{

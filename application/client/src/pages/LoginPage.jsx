@@ -50,7 +50,6 @@ export default function LoginPage() {
 
       if(response.ok){
         const data = await response.json()
-        console.log(data)
         setLoginError("")
         const userData = data.payload
         setUser({...userData})

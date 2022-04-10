@@ -1,13 +1,12 @@
-import { useContext, useState, useEffect } from 'react'
+import { useContext, useState } from 'react'
 import { AccountContext } from '../../contexts/UserContext'
 import { SocketContext } from '../../contexts/SocketContext'
 import './CreateGamePopup.css'
 
 
 
-export default function CreateGamePopup(props) {
+export default function CreateGamePopup() {
 
-  const { setLobbiesProp } = props
 
   const { user } = useContext(AccountContext)
   const  socket  = useContext(SocketContext)
@@ -26,18 +25,7 @@ export default function CreateGamePopup(props) {
    await socket.emit('create_lobby',  { ...data } ) 
   }
 
-  
-
-  useEffect(()=>{
-    socket.on('lobby_created', (data)=>{
-      //console.log("Data")
-      setLobbiesProp(data)
-    })
-  }, [socket, setLobbiesProp])
-
-  // socket.on('wtf', ()=>{
-  //   console.log("WTF")
-  // })
+ 
 
 
   return (

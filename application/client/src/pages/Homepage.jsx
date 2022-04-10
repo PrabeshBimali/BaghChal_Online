@@ -1,43 +1,26 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState } from 'react';
 import HomePageLayout from './HomePageLayout';
 import Lobby from '../components/homepage_components/Lobby';
 import HomepageButtons from '../components/homepage_components/HomepageButtons';
 import BlackScreen from '../components/BlackScreen'
-import { SocketContext } from '../contexts/SocketContext';
 
 
 
 export default function Homepage() {
 
-  const socket = useContext(SocketContext)
 
   const [toggleBlackScreen, setToggleBlackScreen] = useState(false)
   const [toggleCreateGamePopup, setToggleCreateGamePopup] = useState(false)
 
-  const [ lobbies, setLobbies ] = useState([])
-
-  useEffect(() => {
-    const getLobbies = async () => {
-      try{
-        await socket.on("get_lobbies", (data) => {
-          setLobbies(data)
-        })
-      }catch(error){
-        console.log(error)
-      } 
-    }
-    getLobbies()
-  }, [socket])
   
   return (
     <>
       <BlackScreen toggleBlackScreenProp={toggleBlackScreen} 
       toggleCreateGamePopupProp={toggleCreateGamePopup}
       setToggleBlackScreenProp={setToggleBlackScreen} 
-      setToggleCreateGamePopupProp={setToggleCreateGamePopup}
-      setLobbiesProp={setLobbies}/>
+      setToggleCreateGamePopupProp={setToggleCreateGamePopup}/>
       <HomePageLayout>
-          <Lobby lobbiesProp={lobbies}/>
+          <Lobby />
           <HomepageButtons setToggleBlackScreenProp={setToggleBlackScreen}
            setToggleCreateGamePopupProp={setToggleCreateGamePopup}/>
       </HomePageLayout>       
