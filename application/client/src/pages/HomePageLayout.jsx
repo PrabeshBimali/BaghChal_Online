@@ -15,7 +15,7 @@ export default function HomePageLayout({children}) {
     const joinGame = async () => {
       try{
         await socket.on("join_game", (data) => {
-          navigate('/blogs')
+          navigate('/game')
         })
       }catch(error){
         console.log(error)

@@ -1,0 +1,23 @@
+.board{
+    width: 600px;
+    height: 600px;
+    border: solid;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.circle_container{
+    place-self: center;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle{
+    width: 60%;
+    height: 60%;
+    border-radius: 50%;
+    background-color: red;
+}

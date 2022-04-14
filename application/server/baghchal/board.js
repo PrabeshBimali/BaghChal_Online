@@ -160,6 +160,10 @@ class Board{
         return false
     }
 
+    printBoard(){
+        
+    }
+
 
 }
 

@@ -10,8 +10,6 @@ function TableData(props) {
     event.preventDefault()
     console.log(props.data)
     socket.emit('join_game', props.data)
-
-
   }
 
   return (

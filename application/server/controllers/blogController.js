@@ -31,6 +31,10 @@ async function getAllBlogs(req, res){
 
         const blogs = await db.query(query)
 
+        if(blogs.rowCount <= 0){
+            return res.status(204).json({error: false, payload: {message: "No content"}})
+        }
+
         return res.status(200).json({error: false, payload: {
             blogs: blogs.rows
         }})
@@ -56,6 +60,10 @@ async function getMyBlogs(req, res){
 
         const blogs = await db.query(query, [username])
 
+        if(blogs.rowCount <= 0){
+            return res.status(204).json({error: false, payload: {message: "No content"}})
+        }
+
         return res.status(200).json({error: false, payload: {
             blogs: blogs.rows
         }})
@@ -78,6 +86,11 @@ async function getBlogDetail(req, res){
 		on blogs.userid = users.userid where blogid = $1`
 
         const blogDetails = await db.query(query, [blogid])
+
+        if(blogDetails.rowCount <= 0){
+            return res.status(204).json({error: false, payload: {message: "No content"}})
+        }
+
         const data = blogDetails.rows[0]
 
         return res.status(200).json({error: false, payload: { ...data }})

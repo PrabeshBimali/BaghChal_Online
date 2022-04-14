@@ -1,0 +1,19 @@
+.gamepage_container{
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #322f2f;
+    display: flex;
+}
+
+.gamepage_left{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gamepage_right{
+    width: 40%;
+    border: solid;
+}

@@ -11,6 +11,7 @@ import BlogspageCommented from "./pages/blog_pages/BlogspageCommented";
 import PublishBlog from "./pages/blog_pages/PublishBlog";
 import BlogspageMy from "./pages/blog_pages/BlogspageMy";
 import ViewBlog from "./pages/blog_pages/ViewBlog";
+import Gamepage from "./pages/Gamepage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
               <Route path='blogs/my' element={<BlogspageMy/>}></Route>
               <Route path='blogs/publish' element={<PublishBlog/>}></Route>
               <Route path="blogs/:blogId" element={<ViewBlog/>}></Route>
+              <Route path="game" element={<Gamepage/>}></Route>
             </Routes>
           </Router>
         </div>
