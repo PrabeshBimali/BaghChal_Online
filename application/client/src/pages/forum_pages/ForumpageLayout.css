@@ -1,0 +1,36 @@
+.forumpage_container{
+    width: 80%;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #322f2f;
+}
+
+.forumpage_header{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #262424;
+    padding: 10px 0;
+}
+
+.forumpage_title{
+    font-size: 30px;
+    font-weight: bold;
+    color: #999;
+}
+
+.forumpage_link{
+    text-decoration: none;
+    color: #999;
+}
+
+.forumpage_link:hover{
+    color: var(--button-color);
+}
+
+.forum_container{
+    margin: 20px 0;
+}
+

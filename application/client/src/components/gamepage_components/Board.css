@@ -1,23 +1,21 @@
-.board{
-    width: 600px;
+.board_container{
+    position: relative;;
+    min-height: 600px;
+    min-width: 600px;
     height: 600px;
-    border: solid;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    width: 600px;
 }
 
-.circle_container{
-    place-self: center;
-    width: 80%;
-    height: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.board{
+    height: 100%;
+    width: 100%;
+    background-image: url(../../../public/drawing.svg);
 }
 
 .circle{
-    width: 60%;
-    height: 60%;
+    position: absolute;
+    height: 70px;
+    width: 70px;
     border-radius: 50%;
-    background-color: red;
+    background-color: #fff;
 }

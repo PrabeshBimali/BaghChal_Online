@@ -8,7 +8,6 @@ import BlackScreen from '../components/BlackScreen'
 
 export default function Homepage() {
 
-
   const [toggleBlackScreen, setToggleBlackScreen] = useState(false)
   const [toggleCreateGamePopup, setToggleCreateGamePopup] = useState(false)
 

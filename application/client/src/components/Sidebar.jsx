@@ -1,6 +1,6 @@
 import React from 'react';
-import { ImBlog, ImHome } from 'react-icons/im'
-import { MdNavigation } from 'react-icons/md'
+import { ImBlog } from 'react-icons/im'
+import { MdNavigation, MdForum, MdHomeFilled } from 'react-icons/md'
 import './Sidebar.css';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ export default function Sidebar() {
     </div>
     <Link className='sidebar_link' to="/">
       <div className='sidebar_icon_container'>
-        <ImHome/>
+        <MdHomeFilled/>
         <span className='sidebar_icon_text'>Home</span>
       </div>
     </Link>
@@ -22,8 +22,12 @@ export default function Sidebar() {
         <span className='sidebar_icon_text'>Blog</span>
       </div>
     </Link>
-    {/* <div className='sidebar_icon_container'><BsFillHouseDoorFill/><span className='sidebar_icon_text'>Forum</span></div>
-    <div className='sidebar_icon_container'><BsFillHouseDoorFill/><span className='sidebar_icon_text'>Rankings</span></div>
-    <div className='sidebar_icon_container'><BsFillHouseDoorFill/><span className='sidebar_icon_text'>Tutorial</span></div>       */}
+    <Link className='sidebar_link' to="/forum">
+      <div className='sidebar_icon_container'>
+        <MdForum />
+        <span className='sidebar_icon_text'>Forum</span>
+      </div>
+    </Link>
+    
   </div>);
 }

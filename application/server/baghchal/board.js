@@ -39,7 +39,7 @@ class Board{
             this.usedGoats++
         }else{
             if(this.board[fromRow][fromCol].getName === "bagh"){
-
+                
             }
 
             [this.board[fromRow][fromCol], this.board[toRow][toCol]] = [this.board[fromRow][fromCol], this.board[toRow][toCol]]
