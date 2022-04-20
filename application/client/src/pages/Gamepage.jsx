@@ -4,6 +4,8 @@ import Board from '../components/gamepage_components/Board'
 import './Gamepage.css'
 
 export default function GamePage() {
+
+
   return (
     <HomePageLayout>
         <div className='gamepage_container'>

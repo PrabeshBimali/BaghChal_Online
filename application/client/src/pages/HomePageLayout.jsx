@@ -12,8 +12,11 @@ export default function HomePageLayout({children}) {
   const navigate = useNavigate()
 
   useEffect(() => {
+    
     const joinGame = async () => {
       try{
+        await socket.disconnect()
+        await socket.connect()
         await socket.on("join_game", (data) => {
           navigate('/game')
         })

@@ -12,10 +12,11 @@
     background-image: url(../../../public/drawing.svg);
 }
 
-.circle{
+.goat_piece, .bagh_piece{
     position: absolute;
-    height: 70px;
     width: 70px;
+    height: 70px;
     border-radius: 50%;
     background-color: #fff;
+    cursor: pointer;
 }
