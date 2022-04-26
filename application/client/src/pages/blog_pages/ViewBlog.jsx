@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import DOMPurify from 'dompurify'
 import BlogspageLayout from './BlogspageLayout'
 import './ViewBlog.css'
@@ -8,14 +9,13 @@ export default function ViewBlog() {
     const [blogDetail, setBlogDetail] = useState({})
     const [markup, setMarkup] = useState("")
 
+    const {blogId} = useParams()
+
     useEffect(() => {
-        const pathname = window.location.pathname
-        const pattern = /\d+/g
-        const blogid = pathname.match(pattern).join()
 
         async function fetchBlog(){
             try{
-                const response = await fetch(`http://localhost:5000/blog/detail?blogid=${blogid}`, {
+                const response = await fetch(`http://localhost:5000/blog/detail?blogid=${blogId}`, {
                     method: 'GET',
                     mode: 'cors',
                     credentials: 'include'

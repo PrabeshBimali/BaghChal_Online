@@ -13,6 +13,7 @@ import BlogspageMy from "./pages/blog_pages/BlogspageMy";
 import ViewBlog from "./pages/blog_pages/ViewBlog";
 import Forumpage from "./pages/forum_pages/Forumpage";
 import Gamepage from "./pages/Gamepage";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -31,7 +32,8 @@ function App() {
               <Route path='blogs/publish' element={<PublishBlog/>}></Route>
               <Route path="blogs/:blogId" element={<ViewBlog/>}></Route>
               <Route path="forum" element={<Forumpage/>}></Route>
-              <Route path="game" element={<Gamepage/>}></Route>
+              <Route path="game/:gameId" element={<Gamepage/>}></Route>
+              <Route path="*" element={<NotFound/>}></Route>
             </Routes>
           </Router>
         </div>

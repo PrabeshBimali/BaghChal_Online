@@ -7,6 +7,7 @@
     font-size: 30px;
     font-weight: bold;
     color: #999;
+    word-wrap: break-word;
 }
 
 .view_blog_body_container{
@@ -21,6 +22,7 @@
 
 .view_blog_body_container > p{
     margin-top: 2em;
+    word-wrap: break-word;
 }
 
 .view_blog_footer_container{

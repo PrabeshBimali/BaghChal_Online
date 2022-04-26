@@ -8,7 +8,6 @@ function TableData(props) {
 
   function joinGame(event){
     event.preventDefault()
-    console.log(props.data)
     socket.emit('join_game', props.data)
   }
 

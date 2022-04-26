@@ -7,9 +7,33 @@ async function onJoinGame(io, socket, data){
         const randomRoom = v4()
 
         if(socket.request.session.user){
-            const {id} = socket.request.session.user
+            const {id, username} = socket.request.session.user
 
             if(id !== data.userid){
+
+                let opponentSide
+
+                if(data.side.toLowerCase() === 'bagh'){
+                    opponentSide = 'goat'
+                }else{
+                    opponentSide = 'bagh'
+                }
+
+                const time = new Date()
+
+                const hours = time.getHours()
+                const minutes = time.getMinutes()
+
+                await RedisClient.hset(
+                    `game:${randomRoom}`,
+                    'creatorid', `${data.userid}`,
+                    'creatorusername', `${data.username}`,
+                    'opponentid', `${id}`,
+                    'opponentusername', `${username}`,
+                    'creatorside', `${data.side.toLowerCase()}`,
+                    'opponentside', `${opponentSide}`,
+                    'time', `${hours}:${minutes}`
+                )
 
                 await io.in(id).emit("join_game", randomRoom)
                 await io.in(data.userid).emit("join_game", randomRoom)

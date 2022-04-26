@@ -12,11 +12,25 @@
     background-image: url(../../../public/drawing.svg);
 }
 
-.goat_piece, .bagh_piece{
+.goat_piece, .bagh_piece, .valid_circle{
     position: absolute;
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    background-color: #fff;
     cursor: pointer;
+}
+
+.bagh_piece{
+    background-color: #fff;
+    background-image: url(../../../public/tiger.svg);
+}
+
+.valid_circle{
+    background-color: rgba(26, 218, 55, 0.8);
+}
+
+.goat_piece{
+    background-color: #fff;
+    background-image: url(../../../public/goat.svg);
+    background-size: cover;
 }

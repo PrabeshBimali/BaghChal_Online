@@ -1,5 +1,4 @@
 const Piece = require('./piece')
-const Point = require('./point')
 
 class Board{
     constructor(){
@@ -32,8 +31,8 @@ class Board{
     move(piece, toPosition){
         const fromRow = piece.getX
         const fromCol = piece.getY
-        const toRow = toPosition.getX
-        const toCol = toPosition.getY
+        const toRow = toPosition[0]
+        const toCol = toPosition[1]
 
         if(fromRow === -1){
             this.board[toRow][toCol].getName = "goat"
@@ -101,18 +100,18 @@ class Board{
 
 
         for(const move of allMoves){
-            if(this.board[move.getX][move.getY] === 0)
+            if(this.board[move[0]][move[1]] === 0)
                 moves.add(move)
 
-            else if(this.board[move.getX][move.getY].getName === "goat"){
-                const goatRow = move.getX
-                const goatCol = move.getY
+            else if(this.board[move[0]][move[1]].getName === "goat"){
+                const goatRow = move[0]
+                const goatCol = move[1]
                 const rowToAdd = goatRow + (goatRow - row)
                 const colToAdd = goatCol + (goatCol - col)
 
                 if(rowToAdd >= 0 && rowToAdd < this.row && colToAdd >= 0 && colToAdd < this.column){
                     if(this.board[rowToAdd][colToAdd] === 0){
-                        moves.add(new Point(rowToAdd, colToAdd))
+                        moves.add([rowToAdd, colToAdd])
                     }
                 }
 
@@ -134,7 +133,7 @@ class Board{
             let colToAdd = col + element[1]
 
             if(rowToAdd >= 0 && rowToAdd < this.row && colToAdd >= 0 && colToAdd < this.column){
-                moves.add(new Point(rowToAdd, colToAdd))
+                moves.add([rowToAdd, colToAdd])
             }
         }
 
@@ -147,7 +146,7 @@ class Board{
                 colToAdd = col + element[1]
 
                 if(rowToAdd >= 0 && rowToAdd < this.row && colToAdd >= 0 && colToAdd < this.column){
-                    moves.add(new Point(rowToAdd, colToAdd))
+                    moves.add([rowToAdd, colToAdd])
                 }
             }
 
@@ -181,7 +180,7 @@ class Board{
 
     isRowColExist(row, col, commonMoves){
         for(let val of commonMoves){
-            if(val.getX === row && val.getY === col) return true
+            if(val[0] === row && val[1] === col) return true
         }
 
         return false

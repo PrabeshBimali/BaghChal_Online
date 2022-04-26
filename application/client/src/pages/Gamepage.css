@@ -9,11 +9,71 @@
 .gamepage_left{
     width: 60%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 .gamepage_right{
     width: 40%;
-    border: solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.current_data{
+    width: 80%;
+    height: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.chat_container{
+    width: 80%;
+    height: 40%;
+}
+
+.current_data > div{
+    text-align: left;
+    padding: 0 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #999;
+}
+
+.current_data_middle >div{
+    color: #ccc;
+}
+
+.your_name_container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.your_name_icon{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    color: rgb(11, 199, 11);
+}
+
+.your_turn, .you_win{
+    color: rgb(32, 230, 32);
+}
+
+.opponent_turn, .you_lose{
+    color: var(--button-color);
+}
+
+.go_back{
+    padding: 5px;
+    text-decoration: none;
+    background-color: #ccc;
+    color: var(--link-color);
+    border-radius: 5px;
 }

@@ -40,7 +40,6 @@ export default function PublishBlog() {
 
   const publishBlog = async (event) => {
 
-    document.body.scrollTop = 0
 
     event.preventDefault()
     try{
@@ -168,13 +167,3 @@ function BlogEditor(props){
   )
 }
 
-
-
-
-// function LoginFirst(){
-//   <div className="login_first_container">
-//     <div className="login_first_text_container">
-//       Sign In to publish
-//     </div>
-//   </div>
-// }

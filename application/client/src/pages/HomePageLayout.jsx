@@ -18,7 +18,7 @@ export default function HomePageLayout({children}) {
         await socket.disconnect()
         await socket.connect()
         await socket.on("join_game", (data) => {
-          navigate('/game')
+          navigate(`/game/${data}`)
         })
       }catch(error){
         console.log(error)
@@ -26,6 +26,7 @@ export default function HomePageLayout({children}) {
     }
     joinGame()
   }, [socket, navigate])
+  
   return (
     <>
     <Topbar/>
