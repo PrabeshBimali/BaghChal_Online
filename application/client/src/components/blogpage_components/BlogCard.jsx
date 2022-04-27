@@ -23,7 +23,7 @@ export default function BlogCard(props) {
         <div className="blog_card_body_text">{props.blogData.description}</div>
         <div className="blog_card_body_footer">
           <p>Author: {props.blogData.username}</p>
-          <p>{props.blogData.datecreated}</p>
+          <p>{props.blogData.datecreated.substring(0, 10)}</p>
         </div>
       </div>
     </div>

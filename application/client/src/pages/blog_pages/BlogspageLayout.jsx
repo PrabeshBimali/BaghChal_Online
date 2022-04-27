@@ -10,9 +10,6 @@ export default function Blogspage({ children }) {
             <NavLink to="/blogs" className="blogspage_link">
               Community Blogs
             </NavLink>
-            <NavLink to="/blogs/liked" className="blogspage_link">
-              Liked Blogs
-            </NavLink>
             <NavLink to="/blogs/my" className="blogspage_link">
               Your Blogs
             </NavLink>

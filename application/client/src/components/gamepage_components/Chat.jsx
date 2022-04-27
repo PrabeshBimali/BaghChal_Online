@@ -1,15 +1,15 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import { SocketContext } from '../../contexts/SocketContext'
+import UserContext from '../../contexts/UserContext'
 import './Chat.css'
 
 
 export default function Chat() {
 
+    const socket = useContext(SocketContext)
+    //const {user} = useContext(UserContext)
 
-    const val = [{"prabesh": "Fuck you"}, 
-    {"AI": "mu me le merra"},
-    {"AI": "mu me le merra"},
-    {"AI": "mu me le merra"},
-    {"AI": "mu me le merrahskfsjjjgsljgsjg sgaaaa"}]
+    const val = []
     const [input, setInput] = useState("")
     const [chatError, setChatError] = useState("")
 
@@ -17,6 +17,11 @@ export default function Chat() {
         e.preventDefault()
         if(input.length > 40){
             setChatError("Only 40 or less characters supported")
+        }else{
+            const data = {}
+            //data.username = user.username
+            data.chatData = input
+            socket.emit('chat', data)
         }
 
     }

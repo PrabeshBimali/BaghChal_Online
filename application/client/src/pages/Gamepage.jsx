@@ -6,13 +6,14 @@ import './Gamepage.css'
 import {HiStatusOnline} from 'react-icons/hi'
 import { SocketContext } from '../contexts/SocketContext'
 import { AccountContext } from '../contexts/UserContext'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 
 
 export default function GamePage() {
 
   const socket = useContext(SocketContext)
   const {user} = useContext(AccountContext)
+  const redirect = useNavigate()
 
   const {gameId} = useParams()
 
@@ -24,7 +25,14 @@ export default function GamePage() {
   const [killedGoats, setKilledGoats] = useState(0)
   const [trappedTigers, setTrappedTigers] = useState(0)
   const [winner, setWinner] = useState("")
-  const [chat, setChat] = useState("")
+
+  
+  useEffect(()=>{
+    window.onbeforeunload = (event) => "1"
+    // window.onunload = (event) => {
+
+    // }
+  }, [])
 
   useEffect(()=>{
     async function joinedGame(){

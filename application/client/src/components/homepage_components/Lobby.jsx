@@ -17,7 +17,7 @@ function TableData(props) {
         <td>{props.data.username}</td>
         <td>{props.data.side}</td>
         <td>{props.data.type}</td>
-        <td>17:00:26</td>
+        <td>{props.data.currenttime}</td>
       </tr>
     </tbody>
   );
