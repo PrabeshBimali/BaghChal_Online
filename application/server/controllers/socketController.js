@@ -4,6 +4,7 @@ const onDisconnect = require("./socketio/onDisconnect")
 const onJoinGame = require("./socketio/onJoinGame")
 const onJoinedGame = require("./socketio/onJoinedGame")
 const onMove = require('./socketio/onMove')
+const onChat = require('./socketio/onChat')
 
 module.exports = {
     initializeUser, 
@@ -11,5 +12,6 @@ module.exports = {
     onJoinGame,
     onJoinedGame,
     onDisconnect,
-    onMove
+    onMove,
+    onChat
 }

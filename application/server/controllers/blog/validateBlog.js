@@ -19,8 +19,8 @@ async function validateBlog(req, res, next){
 
     const markupWordsCount = markup.split(' ').length
 
-    if(markupWordsCount < 500){
-        return res.status(400).json({error: true, type: 'markup', message: `More than 500 words necessary for blog. Your words count is ${markupWordsCount}`})
+    if(markupWordsCount < 300){
+        return res.status(400).json({error: true, type: 'markup', message: `More than 300 words necessary for blog. Your words count is ${markupWordsCount}`})
     }
 
     if(req.file === undefined){

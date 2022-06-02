@@ -15,7 +15,7 @@ async function registerUser(req, res){
             return res.status(400).json({error: true, message: validate.message, code: 400 })
         }
 
-        const {username, email, password} = req.body;
+        let {username, email, password} = req.body;
 
         username = username.trim().toLowerCase()
         email = email.trim().toLowerCase()

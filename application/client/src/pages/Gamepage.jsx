@@ -13,7 +13,6 @@ export default function GamePage() {
 
   const socket = useContext(SocketContext)
   const {user} = useContext(AccountContext)
-  const redirect = useNavigate()
 
   const {gameId} = useParams()
 
@@ -96,7 +95,7 @@ export default function GamePage() {
                   </div>
                 </div>
                 <div className="chat_container">
-                  <Chat/>
+                  <Chat gameId={gameId}/>
                 </div>
             </div>
         </div>

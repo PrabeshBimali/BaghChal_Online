@@ -102,5 +102,35 @@ async function getBlogDetail(req, res){
     }
 }
 
+async function deleteBlog(req, res){
+    try{
+        const {blogId} = req.body
+        const {id} =req.session.user
 
-module.exports = { createNewBlog, getAllBlogs, getBlogDetail, getMyBlogs }
+        const firstQuery = `SELECT userid FROM blogs where blogId=$1`
+        const userIdRow = await db.query(firstQuery, [blogId])
+
+        if(userIdRow.rowCount > 0){
+            const userid =  userIdRow.rows[0].userid
+
+            if(userid === id){
+                const secondQuery = `DELETE FROM blogs WHERE blogid=$1`
+                await db.query(secondQuery, [blogId])
+                return res.status(200).json({error: false, payload: {message: "Blog Deleted"}})
+            }else{
+                return res.status(400).json({error: true, message: 'cannot delete others blogs'})
+            }
+
+        }else{
+            return res.status(400).json({error: true, message: "Blog does not exist"})
+        }
+        
+    }catch(error){
+        console.log("Error While Deleting Blog")
+        console.log(error)
+        return res.status(500).json({error: true, message: "Internal server error"})
+    }
+}
+
+
+module.exports = { createNewBlog, getAllBlogs, getBlogDetail, getMyBlogs, deleteBlog }

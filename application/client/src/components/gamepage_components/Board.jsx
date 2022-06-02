@@ -35,6 +35,7 @@ export default function Board(props) {
           props.setKilledGoats(data.killedGoats)
           props.setUnusedGoats(data.unusedGoats)
 
+
           if(data.winner){
             props.setWinner(data.winner)
             props.setTurn("Game Over")
