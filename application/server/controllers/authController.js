@@ -55,6 +55,9 @@ async function registerUser(req, res){
         }
 
 
+        await db.query(`Insert into gamestats(userid) values($1)`, [id.rows[0].userid])
+
+
 
         return res.status(201).json({error: false, payload: {username: username, loggedIn: true}})
 
@@ -152,4 +155,9 @@ function isAuthenticatedMiddleware(req, res, next){
     
 }
 
-module.exports = {registerUser, loginUser, isAuthenticated, isAuthenticatedMiddleware}
+function logout(req, res){
+    req.session.destroy()
+    return res.status(200).json({error: false})
+}
+
+module.exports = {registerUser, loginUser, isAuthenticated, isAuthenticatedMiddleware, logout}

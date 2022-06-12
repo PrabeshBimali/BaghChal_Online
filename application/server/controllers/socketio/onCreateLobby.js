@@ -2,16 +2,6 @@ const RedisClient = require('../../config/cache')
 const getAllLobbies = require('./getAllLobbies')
 
 
-// const getAllLobbies = async (pattern) => {
-//     const lobbyKeys = await RedisClient.keys(pattern)
-
-//     let redisCommands = lobbyKeys.map(async (val) => {
-//         return await RedisClient.hgetall(val)
-//     })
-
-//     return Promise.all(redisCommands)
-// }
-
 const isDataValid = (data) => {
     if(data){
         if((data.side === "Bagh" || data.side === "Goat") 
@@ -33,8 +23,19 @@ const onCreateLobby = async (io, socket, data) => {
                 const time = new Date()
                 const hours = time.getHours()
                 const minutes = time.getMinutes()
+                
+                let newHrs = hours.toString()
+                let newMinutes = minutes.toString()
 
-                const currentTime = `${hours}:${minutes}`
+                if(newHrs.length === 1){
+                    newHrs = `0${newHrs}`
+                }
+
+                if(newMinutes.length === 1){
+                    newMinutes = `0${newMinutes}`
+                }
+
+                const currentTime = `${newHrs}:${newMinutes}`
     
                 await RedisClient.hset(
                     `userlobby:${id}`,
@@ -48,7 +49,6 @@ const onCreateLobby = async (io, socket, data) => {
                 await RedisClient.expire(`userlobby:${id}`, 120)
     
                 let lobbies = await getAllLobbies(socket)
-                console.log(lobbies)
                 await io.in('userlobby').emit("lobby_update", lobbies)
 
                 setTimeout(async ()=>{

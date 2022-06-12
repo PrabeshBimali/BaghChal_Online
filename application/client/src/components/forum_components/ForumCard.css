@@ -1,0 +1,35 @@
+.forum_card{
+    width: 90%;
+    min-height: 50px;
+    background-color: rgb(26, 25, 25);
+    word-wrap: break-word;
+    display: flex;
+    flex: 3 1;
+    justify-content: space-between;
+    padding: 0 10px;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.forum_card_des{
+    color: #3692e7;
+}
+
+.forum_card_des:hover{
+    color: #59a9f5;
+    cursor: pointer;
+}
+
+.forum_card_meta{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    color: #ccc;
+}
+
+.forum_card_meta>span{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+

@@ -27,13 +27,13 @@ export default function CurrentGames() {
 
   const socket = useContext(SocketContext)
 
-  const [ lobbies, setLobbies ] = useState([])
+  const [ privateLobbies, setPrivateLobbies ] = useState([])
 
   useEffect(() => {
     const getLobbies = async () => {
       try{
         await socket.on("lobby_update", (data) => {
-          setLobbies(data)
+          setPrivateLobbies(data)
         })
       }catch(error){
         console.log(error)
@@ -55,7 +55,7 @@ export default function CurrentGames() {
           </tr>
         </thead>
 
-        {lobbies.map((values, index) => 
+        {privateLobbies.map((values, index) => 
           <TableData key={index} data={values}/>
         )}
       </table>

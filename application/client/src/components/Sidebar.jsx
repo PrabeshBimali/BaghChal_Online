@@ -18,13 +18,13 @@ export default function Sidebar() {
         <span className='sidebar_icon_text'>Home</span>
       </div>
     </Link>
-    <Link className='sidebar_link' to="/blogs">
+    <Link className='sidebar_link' to="/blogs/all">
       <div className='sidebar_icon_container'>
         <ImBlog />
         <span className='sidebar_icon_text'>Blog</span>
       </div>
     </Link>
-    <Link className='sidebar_link' to="/forum">
+    <Link className='sidebar_link' to="/forum/all">
       <div className='sidebar_icon_container'>
         <MdForum />
         <span className='sidebar_icon_text'>Forum</span>
@@ -36,12 +36,12 @@ export default function Sidebar() {
         <span className='sidebar_icon_text'>Tutorial</span>
       </div>
     </Link>
-    <Link className='sidebar_link' to="/ranking">
+    {/* <Link className='sidebar_link' to="/ranking">
       <div className='sidebar_icon_container'>
         <GiRank3/>
         <span className='sidebar_icon_text'>Ranking</span>
       </div>
-    </Link>
+    </Link> */}
     
   </div>);
 }

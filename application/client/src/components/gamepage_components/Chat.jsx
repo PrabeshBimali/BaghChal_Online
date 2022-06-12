@@ -15,8 +15,8 @@ export default function Chat(props) {
 
     function handleChat(e){
         e.preventDefault()
-        if(input.length > 40){
-            setChatError("Only 40 or less characters supported")
+        if(input.length > 50){
+            setChatError("Only 50 or less characters supported")
         }else if(input.length < 1){
             setChatError("Type something")
         }
@@ -31,12 +31,16 @@ export default function Chat(props) {
 
     }
 
-    function handleIncomingChat(chatData){
-        setAllChats(val => [...allChats, chatData])
-    }
+    
 
     useEffect(() => {
+
+        function handleIncomingChat(chatData){
+            setAllChats(val => [...chatData])
+        }
+
         async function onChat(){
+            
             try{
                 await socket.on('chat', (data) => {
                     handleIncomingChat(data)
@@ -48,14 +52,13 @@ export default function Chat(props) {
         }
 
         onChat()
-    }, [socket])
+    }, [socket, allChats])
 
   return (
     <>
         <div className='chat_body'>
             {allChats.map((val, index)=>{
-                const key = Object.keys(val)[0]
-                return <Text key={index} username={key} text={val[key]}/>
+                return <Text key={index} text={val}/>
             })}
         </div>
 
@@ -77,10 +80,22 @@ export default function Chat(props) {
 }
 
 function Text(props){
+
+    const [username, setUsername] = useState("")
+    const [data, setData] = useState("")
+
+    useEffect(()=>{
+
+        const endIndex = props.text.indexOf(':')
+        setUsername(props.text.substring(0, endIndex))
+        setData(props.text.substring(endIndex+1, props.text.length))
+
+    }, [props])
+
     return(
         <div className='chat_text_container'>
-            <span className='chat_username'>{`${props.username} says:`}</span>
-            <span className='chat_text'>{props.text}</span>
+            <div className='chat_username'>{`${username} says:`}</div>
+            <div className='chat_text'>{data}</div>
         </div>
     )
 }

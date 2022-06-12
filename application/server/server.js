@@ -9,13 +9,22 @@ const { corsConfig,
 
 const { initializeUser,
         onCreateLobby,
-        onDisconnect, onJoinGame, onJoinedGame, onMove, onChat} = require('./controllers/socketController')
+        onDisconnect, 
+        onJoinGame, 
+        onJoinedGame, 
+        onMove, 
+        onChat, 
+        onGameEnd,
+        onCreatePrivateLobby} = require('./controllers/socketController')
 
 
 // Importing routes
 
 const authRoutes = require('./routes/authRoutes')
 const blogRoutes = require('./routes/blogRoutes')
+const userRoutes = require('./routes/userRoutes')
+const gameRoutes = require('./routes/gameRoutes')
+const forumRoutes = require('./routes/forumRoutes')
 
 
 const app = express()
@@ -37,6 +46,9 @@ app.use(expressSession)
 
 app.use('/auth', authRoutes)
 app.use('/blog', blogRoutes)
+app.use('/user', userRoutes)
+app.use('/game', gameRoutes)
+app.use('/forum', forumRoutes)
 
 // Socket code
 
@@ -68,6 +80,14 @@ io.on('connection', function (socket){
 
     socket.on('chat', (data) => {
         onChat(io, socket, data)
+    })
+
+    socket.on('game_end', (data)=>{
+        onGameEnd(io, socket, data)
+    })
+
+    socket.on('create_private_lobby', (data)=>{
+        onCreatePrivateLobby(io, socket, data)
     })
 
     socket.on('disconnecting', ()=>{

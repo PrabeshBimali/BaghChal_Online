@@ -53,6 +53,8 @@
     gap: 10px;
     background-color: #322f2f;
     padding: 5px 5px;
+    word-wrap: break-word;
+
 }
 
 .chat_username{

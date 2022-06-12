@@ -33,3 +33,7 @@
 .forum_container{
     margin: 20px 0;
 }
+
+.forumpage_header a.active{
+    color: var(--button-color);
+}

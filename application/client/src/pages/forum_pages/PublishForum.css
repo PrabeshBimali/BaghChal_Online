@@ -1,0 +1,37 @@
+.forum_editor_textarea {
+    padding: 10px;
+    background-color: #322f2f;
+    border: solid 1px #999;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #ccc;
+    width: 90%;
+    height: 20vh;
+    font-size: 17px;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.forum_editor_textarea:focus {
+    outline: none;
+}
+
+.forum_editor_right>p {
+    width: 90%;
+    min-height: 20vh;
+    overflow: auto;
+    margin: 0 auto;
+    background-color: #322f2f;
+    padding: 10px;
+    text-align: left;
+    border: solid 1px #999;
+    border-radius: 5px;
+    color: #ccc;
+    line-height: 20px;
+    word-wrap: break-word;
+}
+
+.forum_editor_left > h2, .forum_editor_right > h2{
+    color: #ccc;
+}

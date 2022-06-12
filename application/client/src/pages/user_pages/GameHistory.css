@@ -1,0 +1,39 @@
+.history_container{
+    width: 100%;
+    min-height: 90vh;
+    background-color: #322f2f;
+    margin: 0 auto;
+}
+
+
+.history_table {
+    position: relative;
+    margin: 10px auto;
+    padding: 0;
+    width: 70%;
+    height: auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.history_table thead tr {
+    background-color: var(--button-color);
+    font-weight: bold;
+    color: var(--button-font-color);
+}
+
+.history_table tr {
+    background-color: #686363;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 100%;
+    border-top: 1px solid #000;
+}
+
+.history_table tr td {
+    margin: 0;
+    padding: 4px 8px;
+    border: 0;
+    
+}

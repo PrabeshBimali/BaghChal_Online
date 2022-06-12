@@ -3,11 +3,11 @@ const db = require('../config/db')
 async function createNewBlog(req, res){
     try{
         const { id } = req.session.user
-        const { title, description, markup } = req.body
+        const { title, description, markup, rawmarkup } = req.body
         const { filename } = req.file
 
-        const query = 'INSERT INTO Blogs (title, description, markup, imagename, userid) values($1, $2, $3, $4, $5)'
-        await db.query(query, [title, description, markup, filename, id])
+        const query = 'INSERT INTO Blogs (title, description, markup, imagename, userid, rawmarkup) values($1, $2, $3, $4, $5, $6)'
+        await db.query(query, [title, description, markup, filename, id, rawmarkup])
 
         return res.status(200).json({error: false, payload: {
             message: "Blog Saved!"
@@ -24,7 +24,7 @@ async function createNewBlog(req, res){
 
 async function getAllBlogs(req, res){
     try{
-        const query = `Select blogid, title, description, blogcomments, likes, datecreated, username 
+        const query = `Select blogid, title, description, blogcomments, likes, substring(cast(datecreated as text), 1,  10) as datecreated, username 
 		from blogs inner join users
 		on blogs.userid = users.userid
 		order by datecreated desc`
@@ -52,7 +52,7 @@ async function getMyBlogs(req, res){
 
         const { username } = req.session.user
 
-        const query = `Select blogid, title, description, blogcomments, likes, datecreated, username 
+        const query = `Select blogid, title, description, blogcomments, likes, substring(cast(datecreated as text), 1,  10) as datecreated, username 
 		from blogs inner join users
 		on blogs.userid = users.userid
         where users.username = $1
@@ -79,13 +79,13 @@ async function getBlogDetail(req, res){
     try{
 
         const { blogid } = req.query
-        console.log(blogid)
 
-        const query = `Select blogid, title, description, blogcomments, markup, likes, datecreated, username 
+        const query = `Select users.userid, blogid, title, description, blogcomments, markup, likes, substring(cast(datecreated as text), 1,  10) as datecreated, username 
 		from blogs inner join users
 		on blogs.userid = users.userid where blogid = $1`
 
         const blogDetails = await db.query(query, [blogid])
+
 
         if(blogDetails.rowCount <= 0){
             return res.status(204).json({error: false, payload: {message: "No content"}})
@@ -104,18 +104,18 @@ async function getBlogDetail(req, res){
 
 async function deleteBlog(req, res){
     try{
-        const {blogId} = req.body
+        const {blogid} = req.query
         const {id} =req.session.user
 
         const firstQuery = `SELECT userid FROM blogs where blogId=$1`
-        const userIdRow = await db.query(firstQuery, [blogId])
+        const userIdRow = await db.query(firstQuery, [blogid])
 
         if(userIdRow.rowCount > 0){
             const userid =  userIdRow.rows[0].userid
 
             if(userid === id){
                 const secondQuery = `DELETE FROM blogs WHERE blogid=$1`
-                await db.query(secondQuery, [blogId])
+                await db.query(secondQuery, [blogid])
                 return res.status(200).json({error: false, payload: {message: "Blog Deleted"}})
             }else{
                 return res.status(400).json({error: true, message: 'cannot delete others blogs'})

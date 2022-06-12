@@ -174,7 +174,7 @@ function isMoveValid(piece, toPosition, board){
 }
 
 function checkTrappedBaghs(board){
-    trappedBaghs = 0
+    let trappedBaghs = 0
 
     for(let row = 0; row < ROW; row++){
         for(let col = 0; col < COL; col++){
@@ -199,7 +199,7 @@ function isRowColExist(row, col, commonMoves){
 }
 
 function findWinner(trappedTigers, killedGoats){
-    if(trappedBaghs >= 4){
+    if(trappedTigers >= 4){
         return "goat"
     }else if(killedGoats >= 5){
         return "bagh"

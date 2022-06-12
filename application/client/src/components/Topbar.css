@@ -21,3 +21,26 @@
     align-items: center;
     gap: 10px;
 }
+
+.topbar_username{
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+}
+
+.topbar_invites{
+    text-align: center;
+    height: 15px;
+    width: 15px;
+    font-size: 13px;
+    position: absolute;
+    border-radius: 50%;
+    color: white;
+    background-color: var(--success-color);
+}
+
+.topbar_username:hover{
+    color:#abaaaa;
+}

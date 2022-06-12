@@ -3,6 +3,7 @@ import {marked} from 'marked';
 import DOMpurify from 'dompurify'
 import BlogspageLayout from "./BlogspageLayout";
 import "./PublishBlog.css";
+import { useNavigate } from "react-router-dom";
 
 
 export default function PublishBlog() {
@@ -13,7 +14,10 @@ export default function PublishBlog() {
   const [markup, setMarkup] = useState("")
   const [titleError, setTitleError] = useState("")
   const [descriptionError, setDescriptionError] = useState("")
+  const [markupError, setMarkUpError] = useState("")
+  const [rawmarkup, setRawmarkup] = useState("")
   
+  const navigate = useNavigate()
 
   const handleChange = (event) => {
 
@@ -50,6 +54,7 @@ export default function PublishBlog() {
       data.append('description', description)
       data.append('file', file)
       data.append('markup', markup)
+      data.append('rawmarkup', rawmarkup)
 
       const response = await fetch('http://localhost:5000/blog/create', {
         mode: 'cors',
@@ -62,15 +67,15 @@ export default function PublishBlog() {
         setTitle("")
         setDescription("")
         setMarkup("")
-        const data = await response.json()
-        console.log(data)
+        navigate("/blogs/my")
       }else{
         const data = await response.json()
-        console.log(data)
         
         if(data.type === 'title') setTitleError(data.message)
 
         if(data.type === 'description') setDescriptionError(data.message)
+
+        if(data.type === 'markup') setMarkUpError(data.message)
 
       }
 
@@ -109,7 +114,8 @@ export default function PublishBlog() {
             {/* <p className="publish_error">{titleError.length > 0 ? titleError : null}</p> */}
           </div>
           
-          <BlogEditor setMarkupProp={setMarkup}/>
+          <BlogEditor setMarkupProp={setMarkup} setMarkUpError={setMarkUpError} setRawmarkup={setRawmarkup} rawmarkup={rawmarkup}/>
+          <p className="publish_error">{markupError.length > 0 ? markupError : null}</p>
           <div className="publish_blog_button_container">
             <button className="publish_blog_button">Publish</button>
           </div>
@@ -131,6 +137,7 @@ function BlogEditor(props){
     const { value } = e.target
 
     setEditorInput(value)
+    props.setMarkUpError("")
     
   }
 
@@ -145,6 +152,7 @@ function BlogEditor(props){
 
      setEditorOutput(parsedMarkup)
      props.setMarkupProp(parsedMarkup)
+     props.setRawmarkup(editorInput)
 
   }, [editorInput, editorOutput, props])
 
@@ -156,7 +164,7 @@ function BlogEditor(props){
           <h2>Markup for Blog Body</h2>
           <p className="publish_blog_note">Note: Title from title section above wil be used.</p>
           <textarea required='true' value={editorInput} placeholder="Write your markdown here" className="editor_textarea" 
-            onChange={handleChange} type="textarea">
+            onChange={handleChange} name="markup" type="textarea">
           </textarea>
         </div>
         <div className="editor_right">

@@ -10,6 +10,12 @@ const initializeUser = async (io, socket)=>{
             const lobbies = await getAllLobbies(socket)
             await io.in('userlobby').emit("lobby_update", lobbies) 
 
+            let privateLobbies = await getAllPrivateLobbies(socket.user.id);
+
+            let actualLobbies = privateLobbies.filter(val => val.username)
+
+            await io.in(socket.user.id).emit("private_lobby_update", actualLobbies);
+
         }else{
             return
         }
@@ -28,5 +34,15 @@ const initializeUser = async (io, socket)=>{
     }
     
 }
+
+async function getAllPrivateLobbies(id){
+    const lobbyKeys = await RedisClient.smembers(`invites:${id}`)
+    let redisCommands = lobbyKeys.map(async (val) => {
+        return await RedisClient.hgetall(val)
+    })
+
+    return Promise.all(redisCommands)
+}
+
 
 module.exports = initializeUser

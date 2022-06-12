@@ -35,7 +35,7 @@ class Board{
         const toCol = toPosition[1]
 
         if(fromRow === -1){
-            this.board[toRow][toCol].getName = "goat"
+            this.board[toRow][toCol] = piece
             this.usedGoats++
         }else{
             if(this.board[fromRow][fromCol].getName === "bagh"){

@@ -32,13 +32,23 @@ async function onJoinGame(io, socket, data){
                     'opponentusername', `${username}`,
                     'creatorside', `${data.side.toLowerCase()}`,
                     'opponentside', `${opponentSide}`,
-                    'time', `${hours}:${minutes}`
+                    'type', `${data.type.toLowerCase()}`,
+                    'time', `${hours}:${minutes}`,
+                    'ex', 3600
                 )
 
                 await io.in(id).emit("join_game", randomRoom)
                 await io.in(data.userid).emit("join_game", randomRoom)
 
+
                 await RedisClient.del(`userlobby:${data.userid}`)
+                await RedisClient.del(`userlobby:${id}`)
+                await RedisClient.del(`privatelobby:${data.userid}`)
+                await RedisClient.del(`privatelobby:${id}`)
+
+
+                await RedisClient.srem(`invites:${id}`, `privatelobby:${data.userid}`)
+
                 
             }
 

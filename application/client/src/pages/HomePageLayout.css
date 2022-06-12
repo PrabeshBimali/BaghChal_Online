@@ -2,6 +2,7 @@
     --link-color: rgb(26, 73, 145);
     --button-color: #E02A2A;
     --button-font-color: #E9E9E9;
+    --success-color: rgb(21, 216, 21);
 }
 
 .homepage{
@@ -9,5 +10,17 @@
     margin-top: 10px;
 }
 
+blockquote {
+    background: #3b3a3a;
+    border-left: 7px solid rgb(84, 83, 83);
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+  }
+   
+blockquote p {
+    display: inline;
+    font-style: italic;
+}
 
 

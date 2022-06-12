@@ -44,10 +44,6 @@ export default function Board(props) {
 
           props.setTurn(data.turn)
 
-          
-
-
-
           if(data.turn === 'goat' && data.unusedGoats > 0 && props.mySide === 'goat'){
             const validMoves = getValidMoves(new Piece('goat', -1, -1), data.boardState)
             setValidMoves([...validMoves])

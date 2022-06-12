@@ -4,7 +4,6 @@ async function onJoinedGame(io, socket, data){
     try{
 
         if(socket.request.session.user){
-            console.log(data)
             const gameId = data
             const  { username, id } = socket.request.session.user
 
@@ -15,6 +14,7 @@ async function onJoinedGame(io, socket, data){
             dataToSend.killedGoats = 0
             dataToSend.trappedTigers = 0
             dataToSend.unusedGoats = 20
+            dataToSend.type = gameInfo.type
 
             if(id === gameInfo.creatorid){
                 dataToSend.yourSide = gameInfo.creatorside

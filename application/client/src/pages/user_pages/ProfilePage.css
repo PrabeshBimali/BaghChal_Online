@@ -1,0 +1,91 @@
+.profile_page{
+    width: 70%;
+    min-height: 100vh;
+    border: solid 1px #999;
+    margin: 0 auto;
+}
+
+.profile_header{
+    width: 60%;
+    margin: 0 auto;
+}
+
+.profile_title{
+    
+    color: #999;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.profile_image{
+    height: 300px;
+    background-image: url(../../../public/profile.png);
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+.profile_body{
+    width: 60%;
+    margin: 20px auto;
+}
+
+.profile_detail{
+    font-weight: bold;
+    color: #ccc;
+}
+
+.profile_detail > p > span{
+    font-weight: normal;
+    color: #3692e7;
+}
+
+.profile_form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.update_username, .update_email{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.update_email > input, .update_username > input{
+    padding: 10px;
+    background-color: #322f2f;
+    border: solid 1px #999;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #ccc;
+    width: 300px;
+}
+
+
+.update_email > span, .update_username > span{
+    font-size: 15px;
+    color: #999;
+}
+
+.update_profile_button{
+    display: flex;
+    justify-content:center;
+}
+
+.update_profile_button > button{
+    
+    background-color:#525357;
+    font-weight:bold;
+    font-size:1.2em;
+    padding:5px;
+    border-radius:5px;
+    color:#E9E9E9;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    text-decoration:none;
+    border: none;
+        
+}

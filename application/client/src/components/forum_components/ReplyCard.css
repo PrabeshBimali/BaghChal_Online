@@ -1,0 +1,49 @@
+.reply_card_container{
+    border-bottom: solid 1px #5e5d5d;
+    padding: 20px;
+    background-color: rgb(37, 37, 37);
+}
+
+.reply_card_metadata{
+    color: #999;
+    font-weight: bold;
+    display: flex;
+    justify-content: left;
+    gap: 20px;
+    font-size: 15px;
+}
+
+.reply_card_metadata > span{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.reply_card_content{
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+    color: #ccc;
+    line-height: 23px;
+}
+
+.reply_card_content > p{
+    margin-top: 2em;
+    word-wrap: break-word;
+}
+
+.reply_card_footer{
+    display: flex;
+    justify-content: space-between;
+    color: #3692e7;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.reply_card_footer>span{
+    cursor: pointer;
+}
+
+.reply_card_footer>span:hover{
+    color: #59a9f5;
+}

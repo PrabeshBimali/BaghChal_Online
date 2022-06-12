@@ -7,14 +7,11 @@ export default function ForumpageLayout({ children }) {
     <HomePageLayout>
         <div className="forumpage_container">
           <div className="forumpage_header">
-            <NavLink to="/forum" className="forumpage_link">
+            <NavLink to="/forum/all" className="forumpage_link">
               Community Forum
             </NavLink>
             <NavLink to="/forum/my" className="forumpage_link">
               Your Forum
-            </NavLink>
-            <NavLink to="/forum/replied" className="forumpage_link">
-              Replied Forum
             </NavLink>
             <NavLink to="/forum/publish" className="forumpage_link">
               Publish Forum
